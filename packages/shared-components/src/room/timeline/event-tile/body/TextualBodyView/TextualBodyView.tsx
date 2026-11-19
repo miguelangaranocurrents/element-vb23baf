@@ -91,7 +91,9 @@ export interface TextualBodyViewSnapshot {
 
 export interface TextualBodyViewActions {
     /**
-     * Capture-phase click handler attached to the root message-body container.
+     * Click handler attached to the root message-body container.
+     * Bubble phase, so elements that handle their own clicks (e.g. pills) can
+     * stop propagation and take precedence over the generic permalink handling.
      */
     onRootClick?: MouseEventHandler<HTMLDivElement>;
     /**
@@ -278,7 +280,7 @@ export function TextualBodyView({
             <div
                 id={id}
                 className={rootClasses}
-                onClickCapture={vm.onRootClick}
+                onClick={vm.onRootClick}
                 dir="auto"
                 {...eventPresentationAttributes}
             >
@@ -294,7 +296,7 @@ export function TextualBodyView({
     }
 
     return (
-        <div id={id} className={rootClasses} onClickCapture={vm.onRootClick} {...eventPresentationAttributes}>
+        <div id={id} className={rootClasses} onClick={vm.onRootClick} {...eventPresentationAttributes}>
             {renderedBody}
             {urlPreviews}
         </div>

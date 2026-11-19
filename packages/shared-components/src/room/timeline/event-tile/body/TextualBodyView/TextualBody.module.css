@@ -41,6 +41,13 @@
     display: flex;
 }
 
+/* The body is a flex item: without this its automatic minimum size (its
+   min-content width, e.g. a long unbreakable code-block line) would stop it
+   shrinking to the tile, pushing the text and the annotation out of view. */
+.annotated > :first-child {
+    min-width: 0;
+}
+
 .annotatedInline {
     display: inline-flex;
 }

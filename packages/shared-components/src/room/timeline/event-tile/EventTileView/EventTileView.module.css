@@ -119,9 +119,9 @@
 }
 
 /* The shell controls the body-slot surface. Body components own their
-   internal content styling. */
+   internal content styling. The direct child must not clip its content:
+   e.g. the edit composer hosts an autocomplete popup that renders above it. */
 .slotBody > * {
-    overflow-y: hidden;
     text-align: start;
 }
 
